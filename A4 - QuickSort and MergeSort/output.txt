@@ -1,0 +1,52 @@
+Initialization information:
+Array size: 1000000
+Number of runs per test: 5
+
+Algorithm: QuickSort
+Best Result:
+  Min Recurse: 2052720
+  Average: 0.239185426 sec
+Worst Result:
+  Min Recurse: 2052720
+  Average: 0.334994981 sec
+
+Algorithm: QuickSort
+Best Result:
+  Min Recurse: 1428205
+  Average: 0.183125775 sec
+Worst Result:
+  Min Recurse: 1428205
+  Average: 0.254067777 sec
+
+Algorithm: QuickSort
+Best Result:
+  Min Recurse: 1666591
+  Average: 0.227941311 sec
+Worst Result:
+  Min Recurse: 1666591
+  Average: 0.395063164 sec
+
+Algorithm: QuickSort
+Best Result:
+  Min Recurse: 1348830
+  Average: 0.216567561 sec
+Worst Result:
+  Min Recurse: 1348830
+  Average: 0.39095647 sec
+
+Algorithm: MergeSort
+Best Result:
+  Average: 0.500716619 sec
+Worst Result:
+  Average: 0.875229271 sec
+
+After the tests, here is the best setup:
+Algorithm: QuickSort
+  Min Recurse: 1348830
+  Average: 0.500716619 sec
+
+After the tests, here is the worst setup:
+Algorithm: QuickSort
+  Min Recurse: 2052720
+  Average: 0.875229271 sec
+
