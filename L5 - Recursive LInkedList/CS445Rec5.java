@@ -1,5 +1,3 @@
-// CS 0445 Spring 2022
-// Recitation Exercise 5 Main Program
 public class CS445Rec5
 {
 	public static String [] data = {"first", "second", "third", "fourth", "fifth"};

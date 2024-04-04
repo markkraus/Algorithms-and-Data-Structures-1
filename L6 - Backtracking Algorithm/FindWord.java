@@ -1,7 +1,3 @@
-// CS 0445 Spring 2022
-// Solution to Recitation Exercise 6.  See the comments below starting with
-// the word NEW.
-
 import java.io.*;
 import java.util.*;
 
