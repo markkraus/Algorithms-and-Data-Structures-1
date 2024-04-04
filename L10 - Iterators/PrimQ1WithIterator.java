@@ -21,19 +21,19 @@ public class PrimQ1WithIterator<T> implements QueueWithIteratorInterface<T> {
 
   @Override
   public Iterator<T> iterator() {
-    return new QueueIterator();
+    return new QueueIterator(frontIndex);
   }
 
   private class QueueIterator implements Iterator<T> {
     private int currentIndex;
 
-    public QueueIterator() {
-      currentIndex = frontIndex;
+    public QueueIterator(int startIndex) {
+      currentIndex = startIndex;
     }
 
     @Override
     public boolean hasNext() {
-      return currentIndex != (backIndex + 1) % queue.length;
+      return currentIndex != (backIndex + 1) % queue.length && queue[currentIndex] != null;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class PrimQ1WithIterator<T> implements QueueWithIteratorInterface<T> {
       backIndex = (backIndex + 1) % queue.length;
       queue[backIndex] = newEntry;
     } else {
-      throw new IllegalStateException("Queue is full");
+      return;
     }
   }
 
@@ -79,7 +79,7 @@ public class PrimQ1WithIterator<T> implements QueueWithIteratorInterface<T> {
 
   @Override
   public boolean isEmpty() {
-    return frontIndex == (backIndex + 1) % queue.length;
+    return frontIndex == (backIndex + 1) % queue.length && queue[frontIndex] == null;
   }
 
   @Override
@@ -90,6 +90,6 @@ public class PrimQ1WithIterator<T> implements QueueWithIteratorInterface<T> {
   }
 
   private boolean isFull() {
-    return frontIndex == (backIndex + 2) % queue.length;
+    return frontIndex == (backIndex + 2) % queue.length && queue[frontIndex] != null;
   }
 }

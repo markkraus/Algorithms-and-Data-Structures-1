@@ -1,0 +1,12 @@
+Table init size: 199
+Max alpha value: 0.5
+Number of adds: 99
+
+Average probes for first 49 adds = 1.2244897959183674
+Max probes = 3
+
+Average probes for second 49 adds = 1.816326530612245
+Max probes = 9
+
+Average probes for 1000 finds = 2.596
+Max probes = 13
