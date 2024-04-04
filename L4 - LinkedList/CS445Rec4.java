@@ -5,7 +5,6 @@
 //
 // See the output in file Rec4Out.txt
 
-import java.util.*;
 public class CS445Rec4
 {	
 	public static <T> void addItems(LList<T> L, T [] data)

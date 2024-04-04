@@ -1,8 +1,5 @@
 // Test program for your LinkedListPlus2 class
 
-
-import java.util.*;
-
 public class LLPTest2
 {
 	static final String [] data = {"Tori", "Sarah", "Kate", "Aimee", "Shirley",

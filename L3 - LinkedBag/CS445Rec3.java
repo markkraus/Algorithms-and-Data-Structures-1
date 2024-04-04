@@ -10,7 +10,6 @@
 // the objects were ResizableArrayBag<T> objects, and here they are
 // LinkedBag<T> objects. 
 
-import java.util.*;
 public class CS445Rec3
 {	
 	public static <T> void addItems(BagInterface<T> B, T [] data)

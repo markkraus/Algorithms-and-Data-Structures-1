@@ -15,6 +15,7 @@ public class Assig4 {
     Integer[] A, temp;
     int size;
     int trials;
+    @SuppressWarnings("unused")
     double avg;
 
     size = Integer.parseInt(args[0]); // array size

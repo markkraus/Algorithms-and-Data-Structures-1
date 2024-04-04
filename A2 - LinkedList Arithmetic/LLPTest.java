@@ -11,8 +11,6 @@
 // your code to work, you will lose credit, but you can still get PARTIAL
 // credit for your work, so be sure to turn something in no matter what!
 
-import java.util.*;
-
 public class LLPTest
 {
 	static final String [] data = {"Tori", "Sarah", "Kate", "Aimee", "Shirley",

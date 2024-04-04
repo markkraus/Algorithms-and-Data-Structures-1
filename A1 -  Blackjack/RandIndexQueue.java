@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Arrays;
 
 
 public class RandIndexQueue<T> implements MyQ<T>, Shufflable, Indexable<T> {
@@ -11,6 +10,7 @@ public class RandIndexQueue<T> implements MyQ<T>, Shufflable, Indexable<T> {
   private int moves;
 
   //Copy constructor
+  @SuppressWarnings("unchecked")
   public RandIndexQueue(int sz) {
     size = 0;
     q = (T[]) new Object[sz];
@@ -94,6 +94,7 @@ public class RandIndexQueue<T> implements MyQ<T>, Shufflable, Indexable<T> {
   public void enqueue(T newEntry) {
     //if one less than capacity is less than the size of array, create new q and double the size
     if (capacity() - 1 < size) {
+      @SuppressWarnings("unchecked")
       T[] tempQ = (T[]) new Object[capacity() * 2];
 
       int newBack = 0;
@@ -146,6 +147,7 @@ public class RandIndexQueue<T> implements MyQ<T>, Shufflable, Indexable<T> {
 
   @Override
   public T dequeue() {
+    @SuppressWarnings("unused")
     T ind;
     //if q is empty, throw exception
     if (isEmpty()) {
@@ -183,6 +185,7 @@ public class RandIndexQueue<T> implements MyQ<T>, Shufflable, Indexable<T> {
     return size == 0;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void clear() {
     q = (T []) new Object[q.length];

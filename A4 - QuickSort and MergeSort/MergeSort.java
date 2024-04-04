@@ -1,5 +1,6 @@
 public class MergeSort<T extends Comparable<? super T>>
     implements Sorter<T> {
+  @SuppressWarnings("unused")
   private int MIN_SIZE; // min size to recurse, use InsertionSort for smaller sizes to complete sort
 
   public MergeSort() {
@@ -20,6 +21,7 @@ public class MergeSort<T extends Comparable<? super T>>
   }
 
   private void mergeSort(T[] a, int first, int last) {
+    @SuppressWarnings("unchecked")
     T[] tempArray = (T[]) new Comparable<?>[a.length];
     mergeSort(a, tempArray, first, last);
   }

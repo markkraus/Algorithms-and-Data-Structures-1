@@ -13,105 +13,108 @@ public class FindWord
 	// Constructor to set things up and make the initial search call.
 	public FindWord()
 	{
-        Scanner inScan = new Scanner(System.in);
-		Scanner fReader;
-		File fName;
-        String fString = "", word = "";
-       
-       	// Make sure the file name is valid
-        while (true)
-        {
-           try
-           {
-               System.out.println("Please enter grid filename:");
-               fString = inScan.nextLine();
-               fName = new File(fString);
-               fReader = new Scanner(fName);
-              
-               break;
-           }
-           catch (IOException e)
-           {
-               System.out.println("Problem " + e);
-           }
+        try (Scanner inScan = new Scanner(System.in)) {
+          Scanner fReader;
+          File fName;
+              String fString = "", word = "";
+             
+             	// Make sure the file name is valid
+              while (true)
+              {
+                 try
+                 {
+                     System.out.println("Please enter grid filename:");
+                     fString = inScan.nextLine();
+                     fName = new File(fString);
+                     fReader = new Scanner(fName);
+                    
+                     break;
+                 }
+                 catch (IOException e)
+                 {
+                     System.out.println("Problem " + e);
+                 }
+              }
+
+          // Parse input file to create 2-d grid of characters
+          String [] dims = (fReader.nextLine()).split(" ");
+          int rows = Integer.parseInt(dims[0]);
+          int cols = Integer.parseInt(dims[1]);
+          
+          char [][] theBoard = new char[rows][cols];
+
+          for (int i = 0; i < rows; i++)
+          {
+          	String rowString = fReader.nextLine();
+          	for (int j = 0; j < rowString.length(); j++)
+          	{
+          		theBoard[i][j] = Character.toLowerCase(rowString.charAt(j));
+          	}
+          }
+
+          // Show user the grid
+          for (int i = 0; i < rows; i++)
+          {
+          	for (int j = 0; j < cols; j++)
+          	{
+          		System.out.print(theBoard[i][j] + " ");
+          	}
+          	System.out.println();
+          }
+          
+          System.out.println("Please enter the word to search for:");
+              word = (inScan.nextLine()).toLowerCase();
+          while (!(word.equals("")))
+          {
+          	int x = 0, y = 0;
+          
+          	// Search for the word.  Note the nested for loops here.  This allows us to
+          	// start the search at any of the locations in the board.  The search itself
+          	// is recursive (see findWord method for details).  Note also the boolean
+          	// which allows us to exit the loop before all of the positions have been
+          	// tried -- as soon as one solution has been found we can stop looking.
+          	boolean found = false;
+          	for (int r = 0; (r < rows && !found); r++)
+          	{
+          		for (int c = 0; (c < cols && !found); c++)
+          		{
+          		// Start search for each position at index 0 of the word
+          			currWord = new StringBuilder("");
+          			found = findWord(r, c, word, 0, theBoard);
+          			if (found)
+          			{
+          				x = r;  // store starting indices of solution
+          				y = c;
+          			}
+          		}
+          	}
+
+          	if (found)
+          	{
+          		System.out.println("The word: " + word);
+          		System.out.println("was found starting at location (" + x + "," + y + ")");
+          		for (int i = 0; i < rows; i++)
+          		{
+          			for (int j = 0; j < cols; j++)
+          			{
+          				System.out.print(theBoard[i][j] + " ");
+          				theBoard[i][j] = Character.toLowerCase(theBoard[i][j]);
+          			}
+          			System.out.println();
+          		}
+          	}
+          	else
+          	{
+          		System.out.println("The word: " + word);
+          		System.out.println("was not found");
+          	}
+          	
+          	System.out.println("Please enter the word to search for:");
+              	word = (inScan.nextLine()).toLowerCase();
+          }
+        } catch (NumberFormatException e) {
+          e.printStackTrace();
         }
-
-		// Parse input file to create 2-d grid of characters
-		String [] dims = (fReader.nextLine()).split(" ");
-		int rows = Integer.parseInt(dims[0]);
-		int cols = Integer.parseInt(dims[1]);
-		
-		char [][] theBoard = new char[rows][cols];
-
-		for (int i = 0; i < rows; i++)
-		{
-			String rowString = fReader.nextLine();
-			for (int j = 0; j < rowString.length(); j++)
-			{
-				theBoard[i][j] = Character.toLowerCase(rowString.charAt(j));
-			}
-		}
-
-		// Show user the grid
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < cols; j++)
-			{
-				System.out.print(theBoard[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
-		System.out.println("Please enter the word to search for:");
-        word = (inScan.nextLine()).toLowerCase();
-		while (!(word.equals("")))
-		{
-			int x = 0, y = 0;
-		
-			// Search for the word.  Note the nested for loops here.  This allows us to
-			// start the search at any of the locations in the board.  The search itself
-			// is recursive (see findWord method for details).  Note also the boolean
-			// which allows us to exit the loop before all of the positions have been
-			// tried -- as soon as one solution has been found we can stop looking.
-			boolean found = false;
-			for (int r = 0; (r < rows && !found); r++)
-			{
-				for (int c = 0; (c < cols && !found); c++)
-				{
-				// Start search for each position at index 0 of the word
-					currWord = new StringBuilder("");
-					found = findWord(r, c, word, 0, theBoard);
-					if (found)
-					{
-						x = r;  // store starting indices of solution
-						y = c;
-					}
-				}
-			}
-
-			if (found)
-			{
-				System.out.println("The word: " + word);
-				System.out.println("was found starting at location (" + x + "," + y + ")");
-				for (int i = 0; i < rows; i++)
-				{
-					for (int j = 0; j < cols; j++)
-					{
-						System.out.print(theBoard[i][j] + " ");
-						theBoard[i][j] = Character.toLowerCase(theBoard[i][j]);
-					}
-					System.out.println();
-				}
-			}
-			else
-			{
-				System.out.println("The word: " + word);
-				System.out.println("was not found");
-			}
-			
-			System.out.println("Please enter the word to search for:");
-        	word = (inScan.nextLine()).toLowerCase();
-		}
 			
 	}
 

@@ -16,7 +16,8 @@ public class TextMergeQuick
 	public static <T extends Comparable<? super T>>
 	       void mergeSort(T[] a, int first, int last)
 	{
-	  T[] tempArray = (T[])new Comparable<?>[a.length];
+	  @SuppressWarnings("unchecked")
+    T[] tempArray = (T[])new Comparable<?>[a.length];
 	  mergeSort(a, tempArray, first, last);
 	} // end mergeSort
 	
@@ -234,7 +235,7 @@ public class TextMergeQuick
   public static <T extends Comparable<? super T>> 
 	       void insertionSort(T[] a, int first, int last)
 	{
-		int unsorted, index;
+		int unsorted;
 		
 		for (unsorted = first + 1; unsorted <= last; unsorted++)
 		{   // Assertion: a[first] <= a[first + 1] <= ... <= a[unsorted - 1]

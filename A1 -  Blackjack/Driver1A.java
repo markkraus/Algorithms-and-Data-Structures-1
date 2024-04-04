@@ -92,6 +92,7 @@ public class Driver1A
         System.out.println(newData.toString());
 
         System.out.println("Removing 3 items then adding 2");
+        @SuppressWarnings("unused")
         Integer bogus = newData.dequeue();
         bogus = newData.dequeue();
         bogus = newData.dequeue();

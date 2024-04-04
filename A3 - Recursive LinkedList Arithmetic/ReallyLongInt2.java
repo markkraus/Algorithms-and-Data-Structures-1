@@ -14,9 +14,6 @@ public class ReallyLongInt2 	extends LinkedListPlus2<Integer>
         char c;
         int digit = -1;
 
-        // Iterate through the String, getting each character and converting it into
-        // an int.  Then make an Integer and add at the front of the list.
-        int j = 0;
         if(s.length() == 0){
 
         }else{
